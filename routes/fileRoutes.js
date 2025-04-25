@@ -13,4 +13,4 @@ router.get('/myfiles', protect, getUserFiles);
 // تحميل ملف مع التحقق من كلمة المرور/الصلاحية
 router.post('/download/:id', downloadFile);
 
-module.exports = router;
+module.exports.router
