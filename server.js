@@ -1,8 +1,15 @@
+require('dotenv').config();
+
+
+console.log('MONGO_URI:', process.env.MONGO_URI); // 🔥 اختبار
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const app = express(); // <-- لازم يكون هنا قبل أي استخدام لـ app
+const app = express();
+console.log('App initialized'); // 🔥 تأكيد إن app اتعرف
 
 // Middleware
 app.use(express.json());
@@ -16,10 +23,10 @@ const fileRoutes = require('./routes/fileRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/files', fileRoutes);
 
-// Connect to MongoDB
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 })
 .then(() => {
   console.log('MongoDB connected');
